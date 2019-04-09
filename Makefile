@@ -7,13 +7,13 @@ hashpass: hashpass.o md5.o
 
 # Add recipe to compile md5.o from md5.c below,
 # indented with a tab.
-md5.o: md5.c
-
+md5.o: md5.c md5.h
+	clang -c md5.c
 
 # Add recipe to compile hashpass.o from hashpass.c below,
 # indented with a tab.
-hashpass.o: hashpass.c
-
+hashpass.o: hashpass.c md5.h
+	clang -c hashpass.c
 
 hashes: hashpass
 	./hashpass rockyou100.txt hashes.txt
